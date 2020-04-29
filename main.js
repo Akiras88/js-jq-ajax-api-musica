@@ -29,7 +29,8 @@ $(document).ready(function() {
 					poster : cd.poster,
 					title : cd.title,
 					author : cd.author,
-					year : cd.year
+					year : cd.year,
+					genres : cd.genre.toLowerCase()
 				}
 				console.log(albums);
 				// add template
@@ -41,8 +42,19 @@ $(document).ready(function() {
 			console.log('Error');
 		}
 	});
+	/*******************
+	 * select genres
+	 ******************/
+	$('#genres').change(function() {
 
+		var genre = $(this).val();
 
-
+		if ( genre === 'all' ) {
+			$('.cd').show();
+		} else {
+			$('.cd').hide();
+			$('.cd.' + genre).show();
+		}
+	});
 
 }); // end document ready
